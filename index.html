@@ -71,10 +71,19 @@
     </div>
     <div class="col-sm-8 text-left">
       <script type="text/javascript"charset="utf-8">
-            d3.text("https://coinhojae.github.io/DB/201801.csv", function(data) {
-                var parsedCSV = d3.csv.parseRows(data);
+        var parsedCSV = d3.csvParseRows("https://coinhojae.github.io/DB/201801.csv", function(d, i) {
+          return {
+            category: d[0], 
+            coin: d[1],
+            unit: d[2],
+            year: d[3],
+            day: d[4],
+            source: d[5],
+            content: d[6]
+          };
+        });
 
-                var container = d3.select("#hojaetable")
+                 var container = d3.select("#hojaetable")
                     .append("table")
                     .selectAll("tr")
                         .data(parsedCSV).enter()
@@ -83,7 +92,6 @@
                         .data(function(d) { return d; }).enter()
                         .append("td")
                         .text(function(d) { return d; });
-            });
       </script>
       <div class="hojaetable"></div>
     </div>
