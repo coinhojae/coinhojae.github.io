@@ -5,3 +5,4 @@ $(".dropdown-menu li a").click(function(){
 	console.log($(this).text());
 	console.log($(this).data('value'));
 });
+	console.log('aaaa');
