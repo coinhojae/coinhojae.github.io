@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -71,27 +70,45 @@
     </div>
     <div class="col-sm-8 text-left">
       <script type="text/javascript"charset="utf-8">
-        var parsedCSV = d3.csvParseRows("https://coinhojae.github.io/DB/201801.csv", function(d, i) {
-          return {
-            category: d[0], 
-            coin: d[1],
-            unit: d[2],
-            year: d[3],
-            day: d[4],
-            source: d[5],
-            content: d[6]
-          };
-        });
-
-                 var container = d3.select("body")
-                    .append("table")
-                    .selectAll("tr")
-                        .data(parsedCSV).enter()
-                        .append("tr")
-                    .selectAll("td")
-                        .data(function(d) { return d; }).enter()
-                        .append("td")
-                        .text(function(d) { return d; });
+        $.ajax({
+          url: 'https://coinhojae.github.io/DB/201801.csv',
+          dataType: 'text',
+        }).done(successFunction);
+        
+        function successFunction(data) {
+          var allRows = data.split(/\r?\n|\r/);
+          var table = '<table>';
+          for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+            if (singleRow === 0) {
+              table += '<thead>';
+              table += '<tr>';
+            } else {
+              table += '<tr>';
+            }
+            var rowCells = allRows[singleRow].split(',');
+            for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+              if (singleRow === 0) {
+                table += '<th>';
+                table += rowCells[rowCell];
+                table += '</th>';
+              } else {
+                table += '<td>';
+                table += rowCells[rowCell];
+                table += '</td>';
+              }
+            }
+            if (singleRow === 0) {
+              table += '</tr>';
+              table += '</thead>';
+              table += '<tbody>';
+            } else {
+              table += '</tr>';
+            }
+          } 
+          table += '</tbody>';
+          table += '</table>';
+          $('#hojaetable').append(table);
+        }
       </script>
       <div class="hojaetable"></div>
     </div>
