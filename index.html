@@ -55,7 +55,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">SEARCH</a></li>
+        <li class="active"><a href="#">호재</a></li>
+        <li class="active"><a href="#">통계</a></li>
       </ul>
     </div>
   </div>
@@ -69,6 +70,7 @@
       </div>
     </div>
     <div class="col-sm-8 text-left">
+      <input type="text" id="myInput" onkeyup="search()" placeholder="Search for names..">
       <script type="text/javascript"charset="utf-8">
         $.ajax({
           url: 'https://coinhojae.github.io/DB/201801.csv',
