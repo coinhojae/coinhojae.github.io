@@ -1,40 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <style>
-            table {
-                border-collapse: collapse;
-                border: 2px black solid;
-                font: 12px sans-serif;
+<head>
+  <title>가상화폐 호재정보</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <script>
+  function search_by_catecory(filter) {
+    // Declare variables 
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("filter_category");
+    //filter = input.value.toUpperCase();
+    table = document.getElementById("hojae201801");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
+    }
+  }
+  </script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">HOJAE.KR</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">호재</a></li>
+        <li class="divider"></li>
+        <li class="active"><a href="#">호재</a></li>
+        <li class="active"><a href="#">통계</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>좌측(웹) / 상단(모바일)</p>
+      </div>
+    </div>
+    <div class="col-sm-8 text-left">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          카테코리<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" onclick="search_by_catecory("하드포크")">하드포크</a></li>
+          <li><a href="#" onclick="search_by_catecory("밋업")">밋업</a></li>
+        </ul>
+      </div>
+      <input type="text" id="filter_category" onkeyup="search_by_catecory()" placeholder="Search for names..">
+      <script type="text/javascript"charset="utf-8">
+        $.ajax({
+          url: 'https://coinhojae.github.io/DB/201801.csv',
+          dataType: 'text',
+        }).done(successFunction);
+        
+        function successFunction(data) {
+          var allRows = data.split(/\r?\n|\r/);
+          var table = '<table id="hojae201801">';
+          for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+            if (singleRow === 0) {
+              table += '<thead>';
+              table += '<tr>';
+            } else {
+              table += '<tr>';
             }
-
-            td {
-                border: 1px black solid;
-                padding: 5px;
+            var rowCells = allRows[singleRow].split(',');
+            for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+              if (singleRow === 0) {
+                table += '<th>';
+                table += rowCells[rowCell];
+                table += '</th>';
+              } else {
+                table += '<td>';
+                table += rowCells[rowCell];
+                table += '</td>';
+              }
             }
-        </style>
-    </head>
-    <body>
-        <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
-        <script src="d3.min.js?v=3.2.8"></script>
+            if (singleRow === 0) {
+              table += '</tr>';
+              table += '</thead>';
+              table += '<tbody>';
+            } else {
+              table += '</tr>';
+            }
+          } 
+          table += '</tbody>';
+          table += '</table>';
+          $('.hojaetable').append(table);
+        }
+      </script>
+      <div class="hojaetable"></div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>우측(웹) / 하단(모바일)</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <script type="text/javascript"charset="utf-8">
-            d3.text("https://coinhojae.github.io/DB/201801.csv", function(data) {
-                var parsedCSV = d3.csv.parseRows(data);
+<footer class="container-fluid text-center">
+  <p>Contact: hojae.kr@gmail.com</p>
+  <p>Support(BTC): </p>
+</footer>
 
-                var container = d3.select("body")
-                    .append("table")
-
-                    .selectAll("tr")
-                        .data(parsedCSV).enter()
-                        .append("tr")
-
-                    .selectAll("td")
-                        .data(function(d) { return d; }).enter()
-                        .append("td")
-                        .text(function(d) { return d; });
-            });
-        </script>
-    </body>
+</body>
 </html>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111334709-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111334709-1');
+</script>
