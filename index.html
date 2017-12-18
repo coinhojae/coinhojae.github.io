@@ -8,61 +8,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-  <script>
-  function search_by_catecory(filter) {
-    // Declare variables 
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("filter_category");
-    //filter = input.value.toUpperCase();
-    table = document.getElementById("hojae201801");
-    tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      } 
-    }
-  }
-  </script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
-  </style>
+  <link rel="stylesheet" href="http://coinhojae.github.io/css/basic.css">
 </head>
 <body>
 
@@ -78,7 +24,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">호재</a></li>
+        <li class="active"><a href="#">카테코리</a></li>
         <li class="divider"></li>
         <li class="active"><a href="#">호재</a></li>
         <li class="active"><a href="#">통계</a></li>
@@ -100,11 +46,10 @@
           카테코리<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#" onclick="search_by_catecory("하드포크")">하드포크</a></li>
-          <li><a href="#" onclick="search_by_catecory("밋업")">밋업</a></li>
+          <li><a href="#">하드포크</a></li>
+          <li><a href="#">밋업</a></li>
         </ul>
       </div>
-      <input type="text" id="filter_category" onkeyup="search_by_catecory()" placeholder="Search for names..">
       <script type="text/javascript"charset="utf-8">
         $.ajax({
           url: 'https://coinhojae.github.io/DB/201801.csv',
