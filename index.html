@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
+  <script src="https://coinhojae.github.io/js/filtering.js"></script>
   <script src="https://coinhojae.github.io/js/maketable.js"></script>
   <link rel="stylesheet" href="http://coinhojae.github.io/css/basic.css">
 </head>
@@ -49,8 +50,15 @@
           <li><a href="#">하드포크</a></li>
           <li><a href="#">밋업</a></li>
         </ul>
-      </div>
-      </script>
+</div>
+
+<script type="text/javascript"charset="utf-8">
+$.ajax({
+url: 'https://coinhojae.github.io/DB/201801.csv',
+dataType: 'text',
+}).done(maketable);
+</script>
+
       <div class="hojaetable"></div>
     </div>
     <div class="col-sm-2 sidenav">
