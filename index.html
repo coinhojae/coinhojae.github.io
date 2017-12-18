@@ -74,20 +74,18 @@
             d3.text("https://coinhojae.github.io/DB/201801.csv", function(data) {
                 var parsedCSV = d3.csv.parseRows(data);
 
-                var container = d3.select("#col-sm-8")
+                var container = d3.select("hojaetable")
                     .append("table")
-
                     .selectAll("tr")
                         .data(parsedCSV).enter()
                         .append("tr")
-
                     .selectAll("td")
                         .data(function(d) { return d; }).enter()
                         .append("td")
                         .text(function(d) { return d; });
             });
       </script>
-      <div class="hojae-table"></div>
+      <div class="hojaetable"></div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
