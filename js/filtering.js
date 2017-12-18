@@ -1,10 +1,6 @@
-$(function(){
-
-	$(".dropdown-menu").on('click', 'li a', function(){
-		$(".btn:first-child").text($(this).text());
-		console.log($(".btn:first-child").text($(this).text()));
-		$(".btn:first-child").val($(this).text());
-		console.log($(".btn:first-child").val($(this).text()));
-	});
-
+$(".dropdown-menu li a").click(function(){
+	$(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+	$(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+	console.log($(this).text());
+	console.log($(this).data('value'));
 });
