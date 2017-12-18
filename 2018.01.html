@@ -1,0 +1,39 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link type="text/css" rel="stylesheet" href="resources/sheet.css" >
+<style type="text/css">.ritz .waffle a { color: inherit; }.ritz .waffle .s1{background-color:#ffffff;text-align:right;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s0{background-color:#ffffff;text-align:left;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}</style><div class="ritz grid-container" dir="ltr"><table class="waffle" cellspacing="0" cellpadding="0"><thead><tr><th class="row-header freezebar-origin-ltr"></th><th id="0C0" style="width:100px" class="column-headers-background">A</th><th id="0C1" style="width:100px" class="column-headers-background">B</th><th id="0C2" style="width:100px" class="column-headers-background">C</th><th id="0C3" style="width:100px" class="column-headers-background">D</th><th id="0C4" style="width:100px" class="column-headers-background">E</th><th id="0C5" style="width:100px" class="column-headers-background">F</th><th id="0C6" style="width:100px" class="column-headers-background">G</th><th id="0C7" style="width:100px" class="column-headers-background">H</th></tr></thead><tbody><tr style='height:20px;'><th id="0R0" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px;">1</div></th><td class="s0" dir="ltr">Categorize</td><td class="s0" dir="ltr">Coin name</td><td class="s0" dir="ltr">Unit</td><td class="s0" dir="ltr">Year</td><td class="s0" dir="ltr">Month</td><td class="s0" dir="ltr">Date</td><td class="s0" dir="ltr">Source Link</td><td class="s0" dir="ltr">Contents</td></tr><tr style='height:20px;'><th id="0R1" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px;">2</div></th><td class="s0" dir="ltr">Meet-up</td><td class="s0" dir="ltr">Bitcoin</td><td class="s0" dir="ltr">BTC</td><td class="s1" dir="ltr">2018</td><td class="s1" dir="ltr">1</td><td class="s1" dir="ltr">18</td><td></td><td></td></tr><tr style='height:20px;'><th id="0R2" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px;">3</div></th><td class="s0" dir="ltr">Hardfork</td><td class="s0" dir="ltr">Bitcoin Cash</td><td class="s0" dir="ltr">BCH</td><td class="s1" dir="ltr">2018</td><td class="s1" dir="ltr">1</td><td class="s1" dir="ltr">22</td><td></td><td></td></tr></tbody></table></div>
+<script type='text/javascript' nonce='A3qbwRf2/F6B7KptS3aik9HkF00'>
+function posObj(sheet, id, row, col, x, y) {
+  var rtl = false;
+  var sheetElement = document.getElementById(sheet);
+  if (!sheetElement) {
+    sheetElement = document.getElementById(sheet + '-grid-container');
+  }
+  if (sheetElement) {
+    rtl = sheetElement.getAttribute('dir') == 'rtl';
+  }
+  var r = document.getElementById(sheet+'R'+row);
+  var c = document.getElementById(sheet+'C'+col);
+  if (r && c) {
+    var objElement = document.getElementById(id);
+    var s = objElement.style;
+    var t = y;
+    while (r && r != sheetElement) {
+      t += r.offsetTop;
+      r = r.offsetParent;
+    }
+    var offsetX = x;
+    while (c && c != sheetElement) {
+      offsetX += c.offsetLeft;
+      c = c.offsetParent;
+    }
+    if (rtl) {
+      offsetX -= objElement.offsetWidth;
+    }
+    s.left = offsetX + 'px';
+    s.top = t + 'px';
+    s.display = 'block';
+    s.border = '1px solid #000000';
+  }
+};
+function posObjs() {
+};
+posObjs();</script>
