@@ -8,8 +8,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-  <script src="https://coinhojae.github.io/js/maketable.js"></script>
   <link rel="stylesheet" href="http://coinhojae.github.io/css/basic.css">
 </head>
 <body>
@@ -26,6 +24,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+        <li class="active"><a href="#">카테코리</a></li>
+        <li class="divider"></li>
         <li class="active"><a href="#">호재</a></li>
         <li class="active"><a href="#">통계</a></li>
       </ul>
@@ -50,6 +50,46 @@
           <li><a href="#">밋업</a></li>
         </ul>
       </div>
+      <script type="text/javascript"charset="utf-8">
+        $.ajax({
+          url: 'https://coinhojae.github.io/DB/201801.csv',
+          dataType: 'text',
+        }).done(successFunction);
+        
+        function successFunction(data) {
+          var allRows = data.split(/\r?\n|\r/);
+          var table = '<table id="hojae201801">';
+          for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+            if (singleRow === 0) {
+              table += '<thead>';
+              table += '<tr>';
+            } else {
+              table += '<tr>';
+            }
+            var rowCells = allRows[singleRow].split(',');
+            for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+              if (singleRow === 0) {
+                table += '<th>';
+                table += rowCells[rowCell];
+                table += '</th>';
+              } else {
+                table += '<td>';
+                table += rowCells[rowCell];
+                table += '</td>';
+              }
+            }
+            if (singleRow === 0) {
+              table += '</tr>';
+              table += '</thead>';
+              table += '<tbody>';
+            } else {
+              table += '</tr>';
+            }
+          } 
+          table += '</tbody>';
+          table += '</table>';
+          $('.hojaetable').append(table);
+        }
       </script>
       <div class="hojaetable"></div>
     </div>
