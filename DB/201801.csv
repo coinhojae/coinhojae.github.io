@@ -1,3 +1,19 @@
 Year,Month,Date,Coin name,Unit,Categorize,Source Link,Details
-2018,1,18,비트코인,BTC,미팅,,
-2018,1,22,이더리움,BCH,하드포크,,
+2018,1,1,비트코인,BTC,미팅,http://naver.com,디테일 1
+2018,1,1,이더리움,BCH,하드포크,http://bithumb.com,디테일 2
+2018,1,2,비트코인,BTC,업비트 상장,http://google.com,디테일 3
+2018,1,3,비트코인캐시,BCH,하드포크,http://bithumb.com,디테일 4
+2018,1,4,라이트코인,LTC,미팅,http://upbit.com,디테일 5
+2018,1,5,이더리움,BCH,Bifinex 상장,http://bithumb.com,디테일 6
+2018,1,6,비트코인,BTC,업데이트,http://google.com,디테일 7
+2018,1,6,라이트코인,LTC,하드포크,http://naver.com,디테일 8
+2018,1,7,리플,XRP,업데이트,http://upbit.com,디테일 9
+2018,1,8,비트코인,BTC,하드포크,http://google.com,디테일 10
+2018,1,10,이더리움,BCH,하드포크,http://naver.com,디테일 11
+2018,1,25,라이트코인,LTC,소각,http://upbit.com,디테일 12
+2018,1,25,비트코인캐시,BCH,미팅,http://naver.com,디테일 13
+2018,1,26,비트코인,BTC,난이도 조절,http://upbit.com,디테일 14
+2018,1,28,비트코인캐시,BCH,소각,http://naver.com,디테일 15
+2018,1,29,비트코인,BTC,CBOE 상장,http://upbit.com,디테일 16
+2018,1,30,비트코인캐시,BCH,Bithumb 상장,http://naver.com,디테일 17
+2018,1,31,이더리움,BCH,기타,http://google.com,디테일 18

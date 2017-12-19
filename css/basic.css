@@ -1,3 +1,5 @@
+body { padding-bottom: 70px; }
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -28,3 +30,5 @@
 		padding: 15px;
 }
 .row.content {height:auto;}
+
+/* Below For Hozae.kr */

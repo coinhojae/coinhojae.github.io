@@ -13,23 +13,29 @@
   <!--<script type="text/javascript" src="file:///Users/kjlee/coinhojae/js/filtering.js"></script>-->
   <script src="https://coinhojae.github.io/js/maketable.js"></script>
   <link rel="stylesheet" href="https://coinhojae.github.io/css/basic.css">
+    <style>
+        .hozaeFilteringBox {
+            margin: 1%;
+            padding; 1%;
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">HOJAE.KR</a>
+      <a class="navbar-brand" href="#">HOZAE.kr</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">호재</a></li>
-        <li class="active"><a href="#">통계 (준비중)</a></li>
+        <li><a href="#">호재</a></li>
+        <li><a href="#">통계 (준비중)</a></li>
       </ul>
     </div>
   </div>
@@ -37,90 +43,103 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>좌측(웹) / 상단(모바일)</p>
-      </div>
+    <div class="col-sm-1">
+        <div></div><!-- Left Side Banner -->
     </div>
       
       
     <!-- Start Contents-->
-    <div class="col-sm-8 text-left">
+    <div class="col-sm-10 text-left">
         <!-- Start Filter -->
-        <!-- Year -->
-        <div class="btn-group dropdown-year">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            년 <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">년</a></li>
-            <li class="divider"></li>
-            <li><a href="#">2018년</a></li>
-            <li><a href="#">2019년</a></li>
-          </ul>
-        </div>
-        <!-- Month -->
-        <div class="btn-group dropdown-month">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            월 <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">월</a></li>
-            <li class="divider"></li>
-            <li><a href="#">1월</a></li>
-            <li><a href="#">2월</a></li>
-            <li><a href="#">3월</a></li>
-            <li><a href="#">4월</a></li>
-            <li><a href="#">5월</a></li>
-            <li><a href="#">6월</a></li>
-            <li><a href="#">7월</a></li>
-            <li><a href="#">8월</a></li>
-            <li><a href="#">9월</a></li>
-            <li><a href="#">10월</a></li>
-            <li><a href="#">11월</a></li>
-            <li><a href="#">12월</a></li>              
-          </ul>
-        </div>
-        <!-- Coin Name -->
-        <div class="btn-group dropdown-coinname">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            코인 <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">코인</a></li>
-            <li class="divider"></li>
-            <li><a href="#">비트코인 (BTC)</a></li>
-            <li><a href="#">이더리움 (ETH)</a></li>
-            <li><a href="#">비트코인캐시 (BCH)</a></li>
-          </ul>
-        </div>
-        <!-- Coin Name -->
-        <div class="btn-group dropdown-category">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            카테고리 <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">카테고리</a></li>
-            <li class="divider"></li>
-            <li><a href="#">하드포크</a></li>
-            <li><a href="#">미팅</a></li>
-          </ul>
-        </div>
-        <!-- Search Button -->
-        <button type="button" class="btn btn-info">
-            <span class="glyphicon glyphicon-search"></span> Search
-        </button>
+        <div class="btn-group btn-group-justified hozaeFilteringBox">
+            <!-- Year -->
+            <div class="btn-group dropdown-year">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                2018년 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">2018년</a></li>
+                <li><a href="#">2019년</a></li>
+              </ul>
+            </div>
+            <!-- Month -->
+            <div class="btn-group dropdown-month">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                1월 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">1월</a></li>
+                <li><a href="#">2월</a></li>
+                <li><a href="#">3월</a></li>
+                <li><a href="#">4월</a></li>
+                <li><a href="#">5월</a></li>
+                <li><a href="#">6월</a></li>
+                <li><a href="#">7월</a></li>
+                <li><a href="#">8월</a></li>
+                <li><a href="#">9월</a></li>
+                <li><a href="#">10월</a></li>
+                <li><a href="#">11월</a></li>
+                <li><a href="#">12월</a></li>
+              </ul>
+            </div>
+            <!-- Coin Name -->
+            <div class="btn-group dropdown-coinname">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                모든 코인 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">모든 코인</a></li>
+                <li class="divider"></li>
+                <li><a href="#">비트코인 (BTC)</a></li>
+                <li><a href="#">이더리움 (ETH)</a></li>
+                <li><a href="#">비트코인캐시 (BCH)</a></li>
+                <li><a href="#">리플 (XRP)</a></li>
+                <li><a href="#">라이트코인 (LTC)</a></li>
+              </ul>
+            </div>
+            <!-- Category Name -->
+            <div class="btn-group dropdown-category">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                모든 카테고리 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">모든 카테고리</a></li>
+                <li class="divider"></li>
+                <li><a href="#">하드포크</a></li>
+                <li><a href="#">미팅</a></li>
+              </ul>
+            </div>
+        </div><!--end of filtering button gruoup-->
+      
+        <div id="hojae">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th width="25%"><center>일시 (D-Day)</center></th>
+                        <th width="25%"><center>코인 (단위)</center></th>
+                        <th width="40%"><center>내용</center></th>
+                        <th width="10%"><center>출처</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2018년 01월 31일 월요일 (D-365)</td>
+                        <td>비트코인캐시 (BTC)</td>
+                        <td>하드포크 (자세히)</td>
+                        <td>출처</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!--End of Class="Hojae"-->
         
-      <div class="hojaetable"></div>
+        <div class="hojaetable"></div>
     </div>
     <!-- End Contents-->
       
       
       
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>우측(웹) / 하단(모바일)</p>
-      </div>
+    <div class="col-sm-1">
+      <div></div><!-- Right Side Banner-->
     </div>
   </div>
 </div>
