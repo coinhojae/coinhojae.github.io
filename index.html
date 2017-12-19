@@ -6,9 +6,17 @@
     
 <style>
     /* Below For Hozae.kr */
+    a:link, a:hover { text-decoration: none; }
     body { padding-bottom: 70px; }
-    .table td{
+    .table {
+        margin-top: 3%;
        text-align: center;   
+    }
+    .table th {
+        cursor: pointer;
+    }
+    #hojae_site_title {
+        cursor: pointer;
     }
     .hozaeFilteringBox {
         margin: 1%;
@@ -43,6 +51,10 @@
         .sidenav {
             height: auto;
             padding: 15px;
+        }
+        .hozaeFilteringBox {
+            height: auto;
+        }
     }
     .row.content {height:auto;}
 
@@ -66,20 +78,10 @@
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">HOZAE.kr</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">호재</a></li>
-        <li><a href="#">통계 (준비중)</a></li>
-      </ul>
-    </div>
+      <center>
+          <h2 class="lead" id="hojae_site_title">가상화폐 호재정보</h2>
+          <div class="fb-like" data-href="https://coinhojae.github.io" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+      </center>
   </div>
 </nav>
   
@@ -93,7 +95,7 @@
     <!-- Start Contents-->
     <div class="col-sm-10 text-left">
         <!-- Start Filter -->
-        <div class="btn-group btn-group-justified hozaeFilteringBox">
+        <div class="btn-group btn-group-justified hozaeFilteringBox" role="group">
             <!-- Year -->
             <div class="btn-group dropdown-year">
               <button type="button" class="btn btn-default dropdown-toggle btn_year" data-toggle="dropdown" aria-expanded="false">Year <span class="caret"></span>
@@ -151,12 +153,12 @@
         </div><!--end of filtering button gruoup-->
       
         <div id="hojae">
-            <table class="table table-hover">
+            <table class="table table-hover" id="hojaetable">
                 <thead>
                     <tr>
-                        <th width="20%"><center>일시</center></th>
-                        <th width="10%"><center>D-Day</center></th>
-                        <th width="25%"><center>코인 (단위)</center></th>
+                        <th onclick="sortTable(0)" width="20%"><center>일시</center></th>
+                        <th onclick="sortTable(0)" width="10%"><center>D-Day</center></th>
+                        <th onclick="sortTable(2)" width="25%"><center>코인 (단위)</center></th>
                         <th width="35%"><center>내용</center></th>
                         <th width="10%"><center>출처</center></th>
                     </tr>
@@ -184,6 +186,16 @@
 
 </body>
 </html>
+
+<!-- Facebook Like -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111441652-1"></script>
@@ -263,6 +275,17 @@ $.ajax({
     url: 'https://coinhojae.github.io/DB/' + _year + _month + '.csv',
     dataType: 'text',
 }).done(maketable);
+    
+$("#hojae_site_title").click(function() {
+    _today = new Date();
+    _year = _today.getUTCFullYear();
+    _month = _today.getUTCMonth() + 1;
+    
+    $.ajax({
+        url: 'https://coinhojae.github.io/DB/' + _year + _month + '.csv',
+        dataType: 'text',
+    }).done(maketable);
+});
 
 
 // Year
@@ -358,5 +381,64 @@ function get_each_filter() {
   //alert(length(_year) + '/' + length(_month) + '/' + length(_coinname) + '/' + length(_category));      
 
   return [_year, _month, _coinname, _category];
+}
+</script>
+
+
+<!--- Sorting Script -->
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("hojaetable");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc"; 
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++; 
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
 }
 </script>
