@@ -32,3 +32,10 @@ body { padding-bottom: 70px; }
 .row.content {height:auto;}
 
 /* Below For Hozae.kr */
+.hozaeFilteringBox {
+    margin: 1%;
+    padding; 1%;
+}
+.table td {
+   text-align: center;   
+}
