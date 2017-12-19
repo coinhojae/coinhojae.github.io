@@ -292,6 +292,7 @@ $("#hojae_site_title").click(function() {
     _year = _today.getUTCFullYear();
     _month = _today.getUTCMonth() + 1;
     
+    clear_table();
     $.ajax({
         url: 'https://coinhojae.github.io/DB/' + _year + _month + '.csv',
         dataType: 'text',
