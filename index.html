@@ -16,7 +16,12 @@
         cursor: pointer;
     }
     #hojae_site_title {
+        margin: 1%;
         cursor: pointer;
+    }
+    #hojae_fb_like {
+        margin: 0;
+        margin-bottom: 1%;
     }
     .hozaeFilteringBox {
         margin: 1%;
@@ -80,7 +85,7 @@
   <div class="container-fluid">
       <center>
           <h2 class="lead" id="hojae_site_title">가상화폐 호재정보</h2>
-          <div class="fb-like" data-href="https://coinhojae.github.io" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+          <div id="hojae_fb_like" class="fb-like" data-href="https://coinhojae.github.io" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
       </center>
   </div>
 </nav>
@@ -159,7 +164,7 @@
                         <th onclick="sortTable(0)" width="20%"><center>일시</center></th>
                         <th onclick="sortTable(0)" width="10%"><center>D-Day</center></th>
                         <th onclick="sortTable(2)" width="25%"><center>코인 (단위)</center></th>
-                        <th width="35%"><center>내용</center></th>
+                        <th width="35%"><center>카테고리</center></th>
                         <th width="10%"><center>출처</center></th>
                     </tr>
                 </thead>
