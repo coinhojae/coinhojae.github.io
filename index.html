@@ -19,6 +19,51 @@
             padding; 1%;
         }
     </style>
+
+<script>
+function date_to_Korean(data) {
+
+    var format = /[12][0-9]{3}-[0-9]{2}-[0-9]{2}/;
+    if(data.search(format) == -1)
+        return data;
+        
+    var _year = data.substr(0,4);
+    var _month= data.substr(5,2);
+    var _day = data.substr(8,2);
+    
+    return _year+'년'+_month+'월'+_day+'일';        
+}
+    
+    function maketable2(data) {
+    var num_columns = 5;
+    
+    var all_rows = data.split(/\r?\n|\r/);
+    var tbody = '';
+    for (var row = 1; row < all_rows.length; row++) {
+        tbody += '<tr>'
+        var row_data = all_rows[row].split(',');
+        
+        var _date = new Date(row_data[0], row_data[1], row_data[2]); // Date
+        var _dday = "D-6"; // D-Day
+        var _coinname = "비트코인 (BTC)"; // Coinname (Unit)
+        var _contents = "되라제발"; // Contents
+        var _source = "출처"; // Source: link
+        var _detail = 0; // Details
+        
+        var convert_data = [_date, _dday, _coinname, _contents, _source, _detail];
+        
+        for(var col = 0; col < num_columns; col++) {
+			tbody += '<td>';
+			tbody += convert_data[col];
+			tbody += '</td>';
+        }
+        tbody += '</tr>'
+    }
+    console.log(tbody);
+    $('#hojae table tbody').append(tbody);
+}
+</script>
+    
 </head>
 <body>
 
@@ -115,15 +160,17 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th width="25%"><center>일시 (D-Day)</center></th>
+                        <th width="20%"><center>일시</center></th>
+                        <th width="10%"><center>D-Day</center></th>
                         <th width="25%"><center>코인 (단위)</center></th>
-                        <th width="40%"><center>내용</center></th>
+                        <th width="35%"><center>내용</center></th>
                         <th width="10%"><center>출처</center></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>2018년 01월 31일 월요일 (D-365)</td>
+                        <td>2018년 01월 31일 월요일</td>
+                        <td>D-365</td>
                         <td>비트코인캐시 (BTC)</td>
                         <td>하드포크 (자세히)</td>
                         <td>출처</td>
@@ -166,7 +213,7 @@
 $.ajax({
 url: 'https://coinhojae.github.io/DB/201801.csv',
 dataType: 'text',
-}).done(maketable);
+}).done(maketable2);
 </script>
 
 <script>
