@@ -234,6 +234,10 @@
     // Chage Label
     $(this).parents(".dropdown-year").find('.btn').html(year_ + ' <span class="caret"></span>' );
     $(this).parents(".dropdown-year").find('.btn').html(year_ + ' <span class="caret"></span>');
+      
+    // Load Table
+    filters = get_each_filter();
+    load_table(filters[0], filters[1]);
   });
 
   // Month
@@ -242,6 +246,10 @@
     // Chage Label
     $(this).parents(".dropdown-month").find('.btn').html(month_ + ' <span class="caret"></span>' );
     $(this).parents(".dropdown-month").find('.btn').html(month_ + ' <span class="caret"></span>');
+      
+    // Load Table
+    filters = get_each_filter();
+    load_table(filters[0], filters[1]);
   });
     
   // Coinname
@@ -284,6 +292,18 @@
     }
   });
     
+  function clear_table() {
+      $("#hojae table tbody tr").remove();
+  }
+    
+  function load_table(_year, _month) {
+    clear_table();
+    $.ajax({
+        url: 'https://coinhojae.github.io/DB/' + _year + _month + '.csv',
+        dataType: 'text',
+    }).done(maketable2);
+  }
+    
   function get_each_filter() {
       
       var _year = $(".btn_year").text().toString();
@@ -291,8 +311,8 @@
       var _coinname = $(".btn_coinname").text().toString();
       var _category = $(".btn_category").text().toString();
       
-      _year = _year.substr(0, _year.length-1);
-      _month = _month.substr(0, _month.length-1);
+      _year = _year.substr(0, _year.length-2);
+      _month = _month.substr(0, _month.length-2);
       _coinname = _coinname.substr(0, _coinname.length-1);
       _category = _category.substr(0, _category.length-1);
       
