@@ -4,19 +4,13 @@
   <title>가상화폐 호재정보</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://coinhojae.github.io/js/jquery-3.2.1.min.js"></script>
   <script src="https://coinhojae.github.io/js/bootstrap.min.js"></script>
-  <script src="https://coinhojae.github.io/js/jquery.min.js"></script>
   <link rel="stylesheet" href="https://coinhojae.github.io/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://coinhojae.github.io/css/bootstrap-theme.min.css">
 
   <!--<script src="https://coinhojae.github.io/js/filtering.js"></script>-->
   <!--<script type="text/javascript" src="file:///Users/kjlee/coinhojae/js/filtering.js"></script>-->
-    <script>
-        $(".dropdown-menu li a").click(function(){		 
-          $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>' );
-          $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-        });
-    </script>
   <script src="https://coinhojae.github.io/js/maketable.js"></script>
   <link rel="stylesheet" href="https://coinhojae.github.io/css/basic.css">
 </head>
@@ -35,7 +29,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">호재</a></li>
-        <li class="active"><a href="#">통계</a></li>
+        <li class="active"><a href="#">통계 (준비중)</a></li>
       </ul>
     </div>
   </div>
@@ -52,10 +46,58 @@
       
     <!-- Start Contents-->
     <div class="col-sm-8 text-left">
-        <!-- Single button -->
-        <div class="btn-group">
+        <!-- Start Filter -->
+        <!-- Year -->
+        <div class="btn-group dropdown-year">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            카테고리 <span class="caret"></span>
+            년 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">년</a></li>
+            <li class="divider"></li>
+            <li><a href="#">2018년</a></li>
+            <li><a href="#">2019년</a></li>
+          </ul>
+        </div>
+        <!-- Month -->
+        <div class="btn-group dropdown-month">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            월 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">월</a></li>
+            <li class="divider"></li>
+            <li><a href="#">1월</a></li>
+            <li><a href="#">2월</a></li>
+            <li><a href="#">3월</a></li>
+            <li><a href="#">4월</a></li>
+            <li><a href="#">5월</a></li>
+            <li><a href="#">6월</a></li>
+            <li><a href="#">7월</a></li>
+            <li><a href="#">8월</a></li>
+            <li><a href="#">9월</a></li>
+            <li><a href="#">10월</a></li>
+            <li><a href="#">11월</a></li>
+            <li><a href="#">12월</a></li>              
+          </ul>
+        </div>
+        <!-- Coin Name -->
+        <div class="btn-group dropdown-coinname">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            코인 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">코인</a></li>
+            <li class="divider"></li>
+            <li><a href="#">비트코인 (BTC)</a></li>
+            <li><a href="#">이더리움 (ETH)</a></li>
+            <li><a href="#">비트코인캐시 (BCH)</a></li>
+          </ul>
+        </div>
+        <!-- Coin Name -->
+        <div class="btn-group dropdown-category">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            코인 <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">카테고리</a></li>
@@ -64,6 +106,10 @@
             <li><a href="#">미팅</a></li>
           </ul>
         </div>
+        <!-- Search Button -->
+        <button type="button" class="btn btn-info">
+            <span class="glyphicon glyphicon-search"></span> Search
+        </button>
         
       <div class="hojaetable"></div>
     </div>
@@ -102,4 +148,41 @@ $.ajax({
 url: 'https://coinhojae.github.io/DB/201801.csv',
 dataType: 'text',
 }).done(maketable);
+</script>
+
+<script>
+  // Year
+  $( ".dropdown-menu li a" ).click(function() {
+    var category_ = $(this).text();
+    // Chage Label
+    $(this).parents(".dropdown-year").find('.btn').html(category_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-year").find('.btn').html(category_ + ' <span class="caret"></span>');
+  });
+
+  // Month
+  $( ".dropdown-menu li a" ).click(function() {
+    var category_ = $(this).text();
+    // Chage Label
+    $(this).parents(".dropdown-month").find('.btn').html(category_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-month").find('.btn').html(category_ + ' <span class="caret"></span>');
+  });
+    
+  // Month
+  $( ".dropdown-menu li a" ).click(function() {
+    var category_ = $(this).text();
+    // Chage Label
+    $(this).parents(".dropdown-coinname").find('.btn').html(category_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-coinname").find('.btn').html(category_ + ' <span class="caret"></span>');
+  });
+
+
+  // Category
+  $( ".dropdown-menu li a" ).click(function() {
+    var category_ = $(this).text();
+    // Chage Label
+    $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>');
+    
+    $(".hojaetable table tbody tr:contains('하드포크')").hide();
+  });
 </script>
