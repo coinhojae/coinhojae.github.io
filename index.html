@@ -97,7 +97,7 @@
         <!-- Coin Name -->
         <div class="btn-group dropdown-category">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            코인 <span class="caret"></span>
+            카테고리 <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">카테고리</a></li>
@@ -152,7 +152,7 @@ dataType: 'text',
 
 <script>
   // Year
-  $( ".dropdown-menu li a" ).click(function() {
+  $( ".dropdown-year .dropdown-menu li a" ).click(function() {
     var category_ = $(this).text();
     // Chage Label
     $(this).parents(".dropdown-year").find('.btn').html(category_ + ' <span class="caret"></span>' );
@@ -160,15 +160,15 @@ dataType: 'text',
   });
 
   // Month
-  $( ".dropdown-menu li a" ).click(function() {
+  $( ".dropdown-month .dropdown-menu li a" ).click(function() {
     var category_ = $(this).text();
     // Chage Label
     $(this).parents(".dropdown-month").find('.btn').html(category_ + ' <span class="caret"></span>' );
     $(this).parents(".dropdown-month").find('.btn').html(category_ + ' <span class="caret"></span>');
   });
     
-  // Month
-  $( ".dropdown-menu li a" ).click(function() {
+  // Coinname
+  $( ".dropdown-coinname .dropdown-menu li a" ).click(function() {
     var category_ = $(this).text();
     // Chage Label
     $(this).parents(".dropdown-coinname").find('.btn').html(category_ + ' <span class="caret"></span>' );
@@ -177,13 +177,16 @@ dataType: 'text',
 
 
   // Category
-  $( ".dropdown-menu li a" ).click(function() {
+  $( ".dropdown-category .dropdown-menu li a" ).click(function() {
     var category_ = $(this).text();
+    if(category_.includes("카테고리")) { category_ = ""; }
+      
     // Chage Label
     $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>' );
     $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>');
     
     //$ (':not(:contains('+ userString +'))').hide();
+    $(".hojaetable table tbody tr").show();
     $(".hojaetable table tbody tr:not(:contains('" + category_ + "'))").hide();
   });
 </script>
