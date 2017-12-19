@@ -7,9 +7,8 @@
 <style>
     /* Below For Hozae.kr */
     a:link, a:hover { text-decoration: none; }
-    body { padding-bottom: 70px; }
-    .table {
-        margin-top: 3%;
+    .table { 
+       margin-top: 3%;
        text-align: center;   
     }
     .table th {
@@ -157,8 +156,8 @@
             </div>
         </div><!--end of filtering button gruoup-->
       
-        <div id="hojae">
-            <table class="table table-hover" id="hojaetable">
+        <div class="table-responsive" id="hojae">
+            <table class="table table-hover table-bordered" id="hojaetable">
                 <thead>
                     <tr>
                         <th onclick="sortTable(0)" width="20%"><center>일시</center></th>
@@ -221,7 +220,7 @@ function maketable(data) {
     var all_rows = data.split(/\r?\n|\r/);
     var tbody = '';
     for (var row = 1; row < all_rows.length; row++) {
-        tbody += '<tr>'
+        
         var row_data = all_rows[row].split(',');
         
         var _year = row_data[0].substr(0,4);
@@ -248,10 +247,17 @@ function maketable(data) {
         
         var convert_data = [_date, _dday, _coinname, _contents, _source, _detail];
         
+        if(_gap != 0) {
+            tbody += '<tr>'
+        } else {
+            tbody += '<tr class=".danger">'
+        }
         for(var col = 0; col < num_columns; col++) {
-			tbody += '<td>';
-			tbody += convert_data[col];
-			tbody += '</td>';
+            if(_gap >= 0) {
+			 tbody += '<td>';
+			 tbody += convert_data[col];
+			 tbody += '</td>';
+            }
         }
         tbody += '</tr>'
     }
