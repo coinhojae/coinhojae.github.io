@@ -105,18 +105,17 @@
         <div class="btn-group btn-group-justified hozaeFilteringBox">
             <!-- Year -->
             <div class="btn-group dropdown-year">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                2018년 <span class="caret"></span>
+              <button type="button" class="btn btn-default dropdown-toggle btn_year" data-toggle="dropdown" aria-expanded="false">Year <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="#">2017년</a></li>
                 <li><a href="#">2018년</a></li>
                 <li><a href="#">2019년</a></li>
               </ul>
             </div>
             <!-- Month -->
             <div class="btn-group dropdown-month">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                01월 <span class="caret"></span>
+              <button type="button" class="btn btn-default dropdown-toggle btn_month" data-toggle="dropdown" aria-expanded="false">Month <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">01월</a></li>
@@ -135,8 +134,7 @@
             </div>
             <!-- Coin Name -->
             <div class="btn-group dropdown-coinname">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                모든 코인 <span class="caret"></span>
+              <button type="button" class="btn btn-default dropdown-toggle btn_coinname" data-toggle="dropdown" aria-expanded="false">모든 코인 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">모든 코인</a></li>
@@ -150,8 +148,7 @@
             </div>
             <!-- Category Name -->
             <div class="btn-group dropdown-category">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                모든 카테고리 <span class="caret"></span>
+              <button type="button" class="btn btn-default dropdown-toggle btn_category" data-toggle="dropdown" aria-expanded="false">모든 카테고리 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">모든 카테고리</a></li>
@@ -209,49 +206,100 @@
 </script>
 
 <script type="text/javascript"charset="utf-8">
-$.ajax({
-url: 'https://coinhojae.github.io/DB/201801.csv',
-dataType: 'text',
-}).done(maketable2);
+    
+    // Initialize Script
+    var _today = new Date();
+    var _year = _today.getUTCFullYear();
+    var _month = _today.getUTCMonth() + 1;
+    
+    // Year Filter Initialize
+    $(".dropdown-year .dropdown-menu li a").parents(".dropdown-year").find('.btn').html(_year + '년' + ' <span class="caret"></span>' );
+    $(".dropdown-year .dropdown-menu li a").parents(".dropdown-year").find('.btn').html(_year + '년' + ' <span class="caret"></span>');
+    
+    // Month Filter Initialize    
+    $(".dropdown-month .dropdown-menu li a").parents(".dropdown-month").find('.btn').html(_month + '월' + ' <span class="caret"></span>' );
+    $(".dropdown-month .dropdown-menu li a").parents(".dropdown-month").find('.btn').html(_month + '월' + ' <span class="caret"></span>');
+    
+    // Initial Table
+    $.ajax({
+        url: 'https://coinhojae.github.io/DB/' + _year + _month + '.csv',
+        dataType: 'text',
+    }).done(maketable2);
 </script>
 
 <script>
   // Year
   $( ".dropdown-year .dropdown-menu li a" ).click(function() {
-    var category_ = $(this).text();
+    var year_ = $(this).text();
     // Chage Label
-    $(this).parents(".dropdown-year").find('.btn').html(category_ + ' <span class="caret"></span>' );
-    $(this).parents(".dropdown-year").find('.btn').html(category_ + ' <span class="caret"></span>');
+    $(this).parents(".dropdown-year").find('.btn').html(year_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-year").find('.btn').html(year_ + ' <span class="caret"></span>');
   });
 
   // Month
   $( ".dropdown-month .dropdown-menu li a" ).click(function() {
-    var category_ = $(this).text();
+    var month_ = $(this).text();
     // Chage Label
-    $(this).parents(".dropdown-month").find('.btn').html(category_ + ' <span class="caret"></span>' );
-    $(this).parents(".dropdown-month").find('.btn').html(category_ + ' <span class="caret"></span>');
+    $(this).parents(".dropdown-month").find('.btn').html(month_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-month").find('.btn').html(month_ + ' <span class="caret"></span>');
   });
     
   // Coinname
   $( ".dropdown-coinname .dropdown-menu li a" ).click(function() {
-    var category_ = $(this).text();
+    var coinname_ = $(this).text();
+      
     // Chage Label
-    $(this).parents(".dropdown-coinname").find('.btn').html(category_ + ' <span class="caret"></span>' );
-    $(this).parents(".dropdown-coinname").find('.btn').html(category_ + ' <span class="caret"></span>');
+    $(this).parents(".dropdown-coinname").find('.btn').html(coinname_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-coinname").find('.btn').html(coinname_ + ' <span class="caret"></span>');
+      
+    // Filtering
+    _filters = get_each_filter();
+    $("#hojae table tbody tr").show();
+    if(_filters[2].includes("모든") != 1) {
+        $("#hojae table tbody tr:not(:contains('" + _filters[2] + "'))").hide();
+    }
+    if(_filters[3].includes("모든") != 1) {
+        $("#hojae table tbody tr:not(:contains('" + _filters[3] + "'))").hide();
+    }
   });
 
 
   // Category
   $( ".dropdown-category .dropdown-menu li a" ).click(function() {
     var category_ = $(this).text();
-    if(category_.includes("카테고리")) { category_ = ""; }
       
     // Chage Label
-    $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>' );
-    $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>');
+    $(this).parents(".dropdown-category").find('.btn').html(category_ + ' <span class="caret"></span>' );
+    $(this).parents(".dropdown-category").find('.btn').html(category_ + ' <span class="caret"></span>');
     
     //$ (':not(:contains('+ userString +'))').hide();
-    $(".hojaetable table tbody tr").show();
-    $(".hojaetable table tbody tr:not(:contains('" + category_ + "'))").hide();
+    _filters = get_each_filter();
+
+    $("#hojae table tbody tr").show();
+    if(_filters[2].includes("모든") != 1) {
+        $("#hojae table tbody tr:not(:contains('" + _filters[2] + "'))").hide();
+    }
+    if(_filters[3].includes("모든") != 1) {
+        $("#hojae table tbody tr:not(:contains('" + _filters[3] + "'))").hide();
+    }
   });
+    
+  function get_each_filter() {
+      
+      var _year = $(".btn_year").text().toString();
+      var _month = $(".btn_month").text().toString();
+      var _coinname = $(".btn_coinname").text().toString();
+      var _category = $(".btn_category").text().toString();
+      
+      _year = _year.substr(0, _year.length-1);
+      _month = _month.substr(0, _month.length-1);
+      _coinname = _coinname.substr(0, _coinname.length-1);
+      _category = _category.substr(0, _category.length-1);
+      
+      //alert(_year + '/' + _month + '/' + _coinname + '/' + _category);
+      //alert(_year.length);
+      //alert(length(_year) + '/' + length(_month) + '/' + length(_coinname) + '/' + length(_category));      
+      
+      return [_year, _month, _coinname, _category];
+  }
 </script>
