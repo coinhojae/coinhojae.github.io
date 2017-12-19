@@ -18,24 +18,15 @@
             margin: 1%;
             padding; 1%;
         }
+        .table td {
+           text-align: center;   
+        }
     </style>
 
-<script>
-function date_to_Korean(data) {
-
-    var format = /[12][0-9]{3}-[0-9]{2}-[0-9]{2}/;
-    if(data.search(format) == -1)
-        return data;
-        
-    var _year = data.substr(0,4);
-    var _month= data.substr(5,2);
-    var _day = data.substr(8,2);
-    
-    return _year+'년'+_month+'월'+_day+'일';        
-}
-    
+<script>    
     function maketable2(data) {
     var num_columns = 5;
+    var _days = ['일', '월', '화', '수', '목', '금', '토'];
     
     var all_rows = data.split(/\r?\n|\r/);
     var tbody = '';
@@ -43,12 +34,27 @@ function date_to_Korean(data) {
         tbody += '<tr>'
         var row_data = all_rows[row].split(',');
         
-        var _date = new Date(row_data[0], row_data[1], row_data[2]); // Date
-        var _dday = "D-6"; // D-Day
-        var _coinname = "비트코인 (BTC)"; // Coinname (Unit)
-        var _contents = "되라제발"; // Contents
-        var _source = "출처"; // Source: link
-        var _detail = 0; // Details
+        var _year = row_data[0].substr(0,4);
+        var _month = row_data[0].substr(4,2);
+        var _day = row_data[0].substr(6,2);
+        var _day2 = new Date(_year + '-' + _month + '-' + _day).getDay();
+        
+        var _now = new Date();
+        var _gap = Math.floor((new Date(_year + '-' + _month + '-' + _day) - _now) / (1000 * 60 * 60 * 24));
+        
+        var _date = _year + '년 ' + _month + '월 ' + _day + '일 ' + '(' + _days[_day2] + ')'; // Date
+        var _dday = "";
+        if (_gap > 0) {
+            _dday = "D-" + _gap; // D-Day   
+        } else if (_gap < 0) {
+            _dday = "D+" + Math.abs(_gap);
+        } else {
+            _dday = "D-Day!"
+        }
+        var _coinname = row_data[1] + ' (' + row_data[2] + ')'; // Coinname (Unit)
+        var _contents = row_data[3]; // Contents
+        var _source = '<a href=' + row_data[4] + ' target="_blank">' + '출처</a>'; // Source: link
+        var _detail = row_data[5]; // Details
         
         var convert_data = [_date, _dday, _coinname, _contents, _source, _detail];
         
@@ -110,18 +116,18 @@ function date_to_Korean(data) {
             <!-- Month -->
             <div class="btn-group dropdown-month">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                1월 <span class="caret"></span>
+                01월 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">1월</a></li>
-                <li><a href="#">2월</a></li>
-                <li><a href="#">3월</a></li>
-                <li><a href="#">4월</a></li>
-                <li><a href="#">5월</a></li>
-                <li><a href="#">6월</a></li>
-                <li><a href="#">7월</a></li>
-                <li><a href="#">8월</a></li>
-                <li><a href="#">9월</a></li>
+                <li><a href="#">01월</a></li>
+                <li><a href="#">02월</a></li>
+                <li><a href="#">03월</a></li>
+                <li><a href="#">04월</a></li>
+                <li><a href="#">05월</a></li>
+                <li><a href="#">06월</a></li>
+                <li><a href="#">07월</a></li>
+                <li><a href="#">08월</a></li>
+                <li><a href="#">09월</a></li>
                 <li><a href="#">10월</a></li>
                 <li><a href="#">11월</a></li>
                 <li><a href="#">12월</a></li>
@@ -168,13 +174,6 @@ function date_to_Korean(data) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2018년 01월 31일 월요일</td>
-                        <td>D-365</td>
-                        <td>비트코인캐시 (BTC)</td>
-                        <td>하드포크 (자세히)</td>
-                        <td>출처</td>
-                    </tr>
                 </tbody>
             </table>
         </div><!--End of Class="Hojae"-->

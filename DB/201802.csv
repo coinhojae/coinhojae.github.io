@@ -1,19 +1,19 @@
-Year,Month,Date,Coin name,Unit,Categorize,Source Link,Details
-2018,2,1,비트코인,BTC,미팅,http://naver.com,디테일 18
-2018,2,1,이더리움,BCH,하드포크,http://bithumb.com,디테일 19
-2018,2,2,비트코인,BTC,업비트 상장,http://google.com,디테일 20
-2018,2,3,비트코인캐시,BCH,하드포크,http://bithumb.com,디테일 21
-2018,2,4,라이트코인,LTC,미팅,http://upbit.com,디테일 22
-2018,2,5,이더리움,BCH,Bifinex 상장,http://bithumb.com,디테일 23
-2018,2,6,비트코인,BTC,업데이트,http://google.com,디테일 24
-2018,2,6,라이트코인,LTC,하드포크,http://naver.com,디테일 25
-2018,2,7,리플,XRP,업데이트,http://upbit.com,디테일 26
-2018,2,8,비트코인,BTC,하드포크,http://google.com,디테일 27
-2018,2,10,이더리움,BCH,하드포크,http://naver.com,디테일 28
-2018,2,25,라이트코인,LTC,소각,http://upbit.com,디테일 29
-2018,2,25,비트코인캐시,BCH,미팅,http://naver.com,디테일 30
-2018,2,26,비트코인,BTC,난이도 조절,http://upbit.com,디테일 31
-2018,2,28,비트코인캐시,BCH,소각,http://naver.com,디테일 32
-2018,2,29,비트코인,BTC,CBOE 상장,http://upbit.com,디테일 33
-2018,2,30,비트코인캐시,BCH,Bithumb 상장,http://naver.com,디테일 34
-2018,2,31,이더리움,BCH,기타,http://google.com,디테일 35
+Date,Coin name,Unit,Categorize,Source Link,Details,Source Link,Details
+20180201,비트코인,BTC,미팅,http://naver.com,디테일 1,http://naver.com,디테일 18
+20180201,이더리움,BCH,하드포크,http://bithumb.com,디테일 2,http://bithumb.com,디테일 19
+20180202,비트코인,BTC,업비트 상장,http://google.com,디테일 3,http://google.com,디테일 20
+20180203,비트코인캐시,BCH,하드포크,http://bithumb.com,디테일 4,http://bithumb.com,디테일 21
+20180204,라이트코인,LTC,미팅,http://upbit.com,디테일 5,http://upbit.com,디테일 22
+20180205,이더리움,BCH,Bifinex 상장,http://bithumb.com,디테일 6,http://bithumb.com,디테일 23
+20180206,비트코인,BTC,업데이트,http://google.com,디테일 7,http://google.com,디테일 24
+20180206,라이트코인,LTC,하드포크,http://naver.com,디테일 8,http://naver.com,디테일 25
+20180207,리플,XRP,업데이트,http://upbit.com,디테일 9,http://upbit.com,디테일 26
+20180208,비트코인,BTC,하드포크,http://google.com,디테일 10,http://google.com,디테일 27
+20180210,이더리움,BCH,하드포크,http://naver.com,디테일 11,http://naver.com,디테일 28
+20180225,라이트코인,LTC,소각,http://upbit.com,디테일 12,http://upbit.com,디테일 29
+20180225,비트코인캐시,BCH,미팅,http://naver.com,디테일 13,http://naver.com,디테일 30
+20180226,비트코인,BTC,난이도 조절,http://upbit.com,디테일 14,http://upbit.com,디테일 31
+20180228,비트코인캐시,BCH,소각,http://naver.com,디테일 15,http://naver.com,디테일 32
+20180229,비트코인,BTC,CBOE 상장,http://upbit.com,디테일 16,http://upbit.com,디테일 33
+20180230,비트코인캐시,BCH,Bithumb 상장,http://naver.com,디테일 17,http://naver.com,디테일 34
+20180231,이더리움,BCH,기타,http://google.com,디테일 18,http://google.com,디테일 35
