@@ -4,12 +4,19 @@
   <title>가상화폐 호재정보</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <script src="https://coinhojae.github.io/js/bootstrap.min.js"></script>
+  <script src="https://coinhojae.github.io/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://coinhojae.github.io/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://coinhojae.github.io/css/bootstrap-theme.min.css">
 
-  <script src="https://coinhojae.github.io/js/filtering.js"></script>
+  <!--<script src="https://coinhojae.github.io/js/filtering.js"></script>-->
+  <!--<script type="text/javascript" src="file:///Users/kjlee/coinhojae/js/filtering.js"></script>-->
+    <script>
+        $(".dropdown-menu li a").click(function(){		 
+          $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>' );
+          $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+        });
+    </script>
   <script src="https://coinhojae.github.io/js/maketable.js"></script>
   <link rel="stylesheet" href="https://coinhojae.github.io/css/basic.css">
 </head>
@@ -41,26 +48,29 @@
         <p>좌측(웹) / 상단(모바일)</p>
       </div>
     </div>
+      
+      
+    <!-- Start Contents-->
     <div class="col-sm-8 text-left">
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          카테코리<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">하드포크</a></li>
-	  <li><a href="#">밋업</a></li>
-        </ul>
-</div>
-
-<script type="text/javascript"charset="utf-8">
-$.ajax({
-url: 'https://coinhojae.github.io/DB/201801.csv',
-dataType: 'text',
-}).done(maketable);
-</script>
-
+        <!-- Single button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            카테고리 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">카테고리</a></li>
+            <li class="divider"></li>
+            <li><a href="#">하드포크</a></li>
+            <li><a href="#">미팅</a></li>
+          </ul>
+        </div>
+        
       <div class="hojaetable"></div>
     </div>
+    <!-- End Contents-->
+      
+      
+      
     <div class="col-sm-2 sidenav">
       <div class="well">
         <p>우측(웹) / 하단(모바일)</p>
@@ -85,4 +95,11 @@ dataType: 'text',
   gtag('js', new Date());
 
   gtag('config', 'UA-111334709-1');
+</script>
+
+<script type="text/javascript"charset="utf-8">
+$.ajax({
+url: 'https://coinhojae.github.io/DB/201801.csv',
+dataType: 'text',
+}).done(maketable);
 </script>
