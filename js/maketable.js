@@ -1,6 +1,6 @@
 function maketable(data) {
 	var allRows = data.split(/\r?\n|\r/);
-	var table = '<table id="hojae201801">';
+	var table = '<table class="table table-hover" id="hojae201801">';
 	for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
 		if (singleRow === 0) {
 			table += '<thead>';

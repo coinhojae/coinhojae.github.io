@@ -183,6 +183,7 @@ dataType: 'text',
     $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>' );
     $(this).parents(".dropdown-catagory").find('.btn').html(category_ + ' <span class="caret"></span>');
     
-    $(".hojaetable table tbody tr:contains('하드포크')").hide();
+    //$ (':not(:contains('+ userString +'))').hide();
+    $(".hojaetable table tbody tr:not(:contains('" + category_ + "'))").hide();
   });
 </script>
