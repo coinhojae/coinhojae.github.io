@@ -33,6 +33,10 @@
         margin-bottom: 0;
         border-radius: 0;
     }
+    .hojae_kakao {
+        width: 18px;
+        height: 18px;
+    }
 
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
@@ -274,18 +278,17 @@ function maketable(data) {
                     tbody += '<td>';
                      if (col == 3) {
                         tbody += convert_data[col];
-                        tbody += '    <img src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"></td>';
+                        tbody += '    <a href="javascript:share_hojae' + row + '(' + ')' + '"><img class="hojae_kakao" src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"></td>';
                      } else {
                         tbody += convert_data[col];
                         tbody += '</td>';
                      }                  
                 }
-                        $('body').append('<a href="javascript:share_hojae' + row + '(' + ')' + '"><img src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png">')
             } else {
                     tbody += '<td>';
                      if (col == 3) {
                         tbody += convert_data[col];
-                        tbody += '    <a href="javascript:share_hojae' + row + '(' + ')' + '"><img src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"></td>';
+                        tbody += '    <a href="javascript:share_hojae' + row + '(' + ')' + '"><img class="hojae_kakao" src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"></td>';
                      } else {
                         tbody += convert_data[col];
                         tbody += '</td>';
@@ -297,7 +300,7 @@ function maketable(data) {
             script += '<script>' +
                         'function share_hojae' + row + '() {' +
                             'Kakao.Link.sendTalkLink({' +
-                                'label: \'' + _date + _dday + _coinname + _contents + '\',' +
+                                'label: \'[' + _date + '] \(' + _dday + '\)' + _coinname + ': ' + _contents + '\',' +
                                 'webLink: {' +
                                     'text: \'더 많은 가상 화폐 호재 보러가기\',' +
                                     'url: \'https://coinhojae.github.io/\'' +
