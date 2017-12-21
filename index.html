@@ -291,10 +291,10 @@ function maketable(data) {
                         'Kakao.init(\'0acf9035ce47c582a77274d9df684a2a\');' +
                         'function share_hojae' + row + '() {' +
                             'Kakao.Link.sendTalkLink({' +
-                                'label: ' + _date + _dday + _coinname + _contents + ',' +
+                                'label: \'' + _date + _dday + _coinname + _contents + '\',' +
                                 'webLink: {' +
-                                    'text: \'더 많은 가상 화폐 호재 보러가기\',' +
-                                    'url: \'https://coinhojae.github.io/\'' +
+                                    '\'text: \'더 많은 가상 화폐 호재 보러가기\',' +
+                                    '\'url: \'https://coinhojae.github.io/\'' +
                                 '},' +
 //                                image: { // 80 * 80 이상
 //                                    src: '대표이미지 url',
@@ -304,10 +304,8 @@ function maketable(data) {
                             '});' +
                         '}' +
                     '<\/script>';
-            
-            
-            
-            
+            console.log(script);
+                        
         }
         tbody += '</tr>'
     }
