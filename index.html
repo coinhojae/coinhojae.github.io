@@ -79,6 +79,8 @@
   <link rel="stylesheet" href="https://coinhojae.github.io/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://coinhojae.github.io/css/bootstrap-toggle.min.css">
     
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -194,7 +196,6 @@
   <p>Contact: hozae.kr@gmail.com</p>
   <p>Support(BTC): </p>
 </footer>
-    
 </body>
 </html>
 
@@ -223,6 +224,7 @@
 var see_past = 0;
     
 function maketable(data) {
+    var script = '';
     var num_columns = 5;
     var _days = ['일', '월', '화', '수', '목', '금', '토'];
     
@@ -264,15 +266,48 @@ function maketable(data) {
         for(var col = 0; col < num_columns; col++) {
             if(see_past == 0) {
                 if(_gap >= 0) {
-                 tbody += '<td>';
-                 tbody += convert_data[col];
-                 tbody += '</td>';
+                    tbody += '<td>';
+                     if (col == 3) {
+                        tbody += convert_data[col];
+                        tbody += '    <img src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"></td>';
+                     } else {
+                        tbody += convert_data[col];
+                        tbody += '</td>';
+                     }                  
                 }
             } else {
-                tbody += '<td>';
-                tbody += convert_data[col];
-                tbody += '</td>';
+                    tbody += '<td>';
+                     if (col == 3) {
+                        tbody += convert_data[col];
+                        tbody += '    <a href="javascript:share_hojae' + row + '(' + ')' + '"><img src="https://dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"></td>';
+                     } else {
+                        tbody += convert_data[col];
+                        tbody += '</td>';
+                     }        
             }
+            
+            // Script
+            script += '<script>' +
+                        'Kakao.init(\'0acf9035ce47c582a77274d9df684a2a\');' +
+                        'function share_hojae' + row + '() {' +
+                            'Kakao.Link.sendTalkLink({' +
+                                'label: ' + _date + _dday + _coinname + _contents + ',' +
+                                'webLink: {' +
+                                    'text: \'더 많은 가상 화폐 호재 보러가기\',' +
+                                    'url: \'https://coinhojae.github.io/\'' +
+                                '},' +
+//                                image: { // 80 * 80 이상
+//                                    src: '대표이미지 url',
+//                                    width: '대표이미지 width',
+//                                    height: '대표이미지 height'
+                                '}' +
+                            '});' +
+                        '}' +
+                    '<\/script>';
+            
+            
+            
+            
         }
         tbody += '</tr>'
     }
